@@ -1,16 +1,32 @@
 import unittest
 from selenium import webdriver
+from pageObjects.homePageItems import HomePageItems
+from pageObjects.registerAccountItems import RegisterAccountItems
+import time
 
 class OpenCartSignInTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver =webdriver.Chrome('drivers/chromedriver.exe')
+        self.driver = webdriver.Chrome('drivers/chromedriver.exe')
         self.driver.maximize_window()
         self.driver.get('https://demo.opencart.com/')
+        self.itemsHomePage = HomePageItems(self.driver)
+        self.itemsRegisterAcc = RegisterAccountItems(self.driver)
 
-    def test_sign_in_opencart(self):
-        self.driver.find_element_by_class_name('dropdown')
-        self.driver.find_element_by_xpath('//*[@id="top-links"]/ul/li[2]/ul/li[1]/a')
+    def test_register_in_opencart(self):
+        self.itemsHomePage.click_in_myaccount()
+        self.itemsHomePage.click_in_register()
+        self.itemsRegisterAcc.fill_name_input('Bruce')
+        self.itemsRegisterAcc.fill_last_name_input('Wayne')
+        self.itemsRegisterAcc.fill_email_input('batman4@prueba.com')
+        self.itemsRegisterAcc.fill_telephone_input('1234666')
+        self.itemsRegisterAcc.fill_password_input('123prueba')
+        self.itemsRegisterAcc.fill_confirm_password_input('123prueba')
+        self.itemsRegisterAcc.click_suscribe_input()
+        self.itemsRegisterAcc.click_privacy_button()
+        self.itemsRegisterAcc.click_confirm_button()
+        time.sleep(5)
+
 
     def tearDown(self):
         self.driver.close()
