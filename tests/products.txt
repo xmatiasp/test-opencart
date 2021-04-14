@@ -1,0 +1,2 @@
+['MacBook Pro', 'MacBook Air', 'MacBook']
+['$2,000.00\nEx Tax: $2,000.00', '$1,202.00\nEx Tax: $1,000.00', '$602.00\nEx Tax: $500.00']

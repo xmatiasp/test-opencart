@@ -7,7 +7,7 @@ from tests.pageObjects.listPageItems import ListPageItems
 class AddToCartTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome('drivers/chromedriver.exe')
+        self.driver = webdriver.Chrome('../tests/drivers/chromedriver.exe')
         self.driver.maximize_window()
         self.driver.get('https://demo.opencart.com/')
         self.itemsHomePage = HomePageItems(self.driver)
@@ -15,8 +15,9 @@ class AddToCartTests(unittest.TestCase):
 
     def test_add_macbook_in_cart(self):
         self.itemsHomePage.search_product('MacBook')
+        self.assertEqual(self.itemsListPage.return_result_text(), 'Search - MacBook')
         self.itemsListPage.sort_by_price_high_low()
-        time.sleep(3)
+        time.sleep(0.7)
         self.itemsListPage.return_products_name_and_price()
 
 

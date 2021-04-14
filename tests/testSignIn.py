@@ -7,7 +7,7 @@ import time
 class OpenCartSignInTests(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome('drivers/chromedriver.exe')
+        self.driver = webdriver.Chrome('../tests/drivers/chromedriver.exe')
         self.driver.maximize_window()
         self.driver.get('https://demo.opencart.com/')
         self.itemsHomePage = HomePageItems(self.driver)
@@ -19,7 +19,7 @@ class OpenCartSignInTests(unittest.TestCase):
         self.itemsRegisterAcc.fill_name_input('Bruce')
         self.itemsRegisterAcc.fill_last_name_input('Wayne')
         #utilizar nuevo mail cada vez que se corra esta prueba
-        self.itemsRegisterAcc.fill_email_input('batman9@prueba.com')
+        self.itemsRegisterAcc.fill_email_input('batman12@prueba.com')
         self.itemsRegisterAcc.fill_telephone_input('1234666')
         self.itemsRegisterAcc.fill_password_input('123prueba')
         self.itemsRegisterAcc.fill_confirm_password_input('123prueba')
